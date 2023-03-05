@@ -28,8 +28,8 @@ namespace FaceDetect2
             CvInvoke.Normalize(dst, dst, 0, 1, NormType.MinMax, dst.Depth);
 
             double minValue = 1000, maxvalue = -1;
-            Point minLoc = new Point();
-            Point maxLoc = new Point();
+            Point minLoc = new Point(0, 0);
+            Point maxLoc = new Point(0, 0);
 
             CvInvoke.MinMaxLoc(dst, ref minValue, ref maxvalue, ref minLoc, ref maxLoc);
             CvInvoke.Rectangle(result, new Rectangle(maxLoc.X, maxLoc.Y, tempImg.Width, tempImg.Height), new MCvScalar(0, 255, 0), 2);

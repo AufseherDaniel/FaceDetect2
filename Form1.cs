@@ -48,14 +48,15 @@ namespace FaceDetect2
 
         private void Templates_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TemplateBox.SelectedIndex == 0) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Brows.png"); }
-            if (TemplateBox.SelectedIndex == 1) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browL.png"); }
-            if (TemplateBox.SelectedIndex == 2) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browR.png"); }
-            if (TemplateBox.SelectedIndex == 3) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "eyes.png"); }
-            if (TemplateBox.SelectedIndex == 4) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeL.png"); }
-            if (TemplateBox.SelectedIndex == 5) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeR.png"); }
-            if (TemplateBox.SelectedIndex == 6) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Nouse.png"); }
-            if (TemplateBox.SelectedIndex == 7) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Mouth.png"); }
+            if (Templates.SelectedIndex == 0) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Brows.png"); }
+            if (Templates.SelectedIndex == 1) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browL.png"); }
+            if (Templates.SelectedIndex == 2) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browR.png"); }
+            if (Templates.SelectedIndex == 3) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "eyes.png"); }
+            if (Templates.SelectedIndex == 4) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeL.png"); }
+            if (Templates.SelectedIndex == 5) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeR.png"); }
+            if (Templates.SelectedIndex == 6) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Nouse.png"); }
+            if (Templates.SelectedIndex == 7) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Mouth.png"); }
+            if (Templates.SelectedIndex == 8) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Face.png"); }
         }
     }
 }

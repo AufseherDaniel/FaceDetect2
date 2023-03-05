@@ -98,7 +98,7 @@ namespace FaceDetect2
             this.FindB});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -109,7 +109,7 @@ namespace FaceDetect2
             this.File.Image = ((System.Drawing.Image)(resources.GetObject("File.Image")));
             this.File.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.File.Name = "File";
-            this.File.Size = new System.Drawing.Size(49, 28);
+            this.File.Size = new System.Drawing.Size(49, 25);
             this.File.Text = "Файл";
             this.File.Click += new System.EventHandler(this.File_Click);
             // 
@@ -132,7 +132,8 @@ namespace FaceDetect2
             "Глаз(Л)",
             "Глаз(П)",
             "Нос",
-            "Рот"});
+            "Рот",
+            "Лицо"});
             this.Templates.Name = "Templates";
             this.Templates.Size = new System.Drawing.Size(121, 28);
             this.Templates.SelectedIndexChanged += new System.EventHandler(this.Templates_SelectedIndexChanged);
