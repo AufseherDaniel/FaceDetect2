@@ -62,10 +62,10 @@ namespace FaceDetect2
 
         public Bitmap LinesOfSymmetry(string original)
         {
-            List<Point> _pointsBot = new List<Point>();
-            List<Point> _pointsTop = new List<Point>();
-            Point _nBot;
-            Point _nTop;
+            List<int> _YBot = new List<int>();
+            List<int> _YTop = new List<int>();
+            List<int> _X = new List<int>();
+            int k = 0;
             CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(Environment.CurrentDirectory, @"Templates\", "haarcascade_frontalface_alt.xml"));
             CascadeClassifier eye_cascade = new CascadeClassifier(Path.Combine(Environment.CurrentDirectory, @"Templates\", "haarcascade_eye.xml")); 
             Mat result = CvInvoke.Imread(original);
@@ -75,41 +75,29 @@ namespace FaceDetect2
             Rectangle[] faceDetect = face_cascade.DetectMultiScale(gray, 1.1, 2, new Size(50, 50));
             foreach (var i in faceDetect)
             {
+                _YTop.Add(i.Top);
+                _YBot.Add(i.Bottom);
                 Mat eyeImg = new Mat(gray, i);
                 Rectangle[] eyeDetect = eye_cascade.DetectMultiScale(eyeImg, 1.1, 2, new Size(20, 20));
-                foreach (var j in eyeDetect)
+                if (eyeDetect.Length > 1)
                 {
-                    Rectangle rect = new Rectangle(i.X + j.X, i.Y + j.Y, j.Width, j.Height);
-                    _pointsTop.Add(FindTopCenter(rect));
-                    _pointsBot.Add(FindBotCenter(rect));
+                    for (int j = 0; j <= 1; j++)
+                    {
+                        Rectangle rect = new Rectangle(i.X + eyeDetect[j].X, i.Y + eyeDetect[j].Y, eyeDetect[j].Width, eyeDetect[j].Height);
+                        _X.Add(FindCenter(rect).X);
+                    }
                 }
             }
 
-            for (int j = 0; j <= _pointsTop.Count-1; j++ )
+            for (int j = 0; j <= _X.Count-1; j++ )
+            {
+                CvInvoke.Line(result, new Point(_X[j], _YBot[k]), new Point(_X[j], _YTop[k]), new MCvScalar(255, 0, 0), 2);
+                if (j % 2 != 0)
                 {
-                    CvInvoke.Line(result, _pointsTop[j], _pointsBot[j], new MCvScalar(255, 0, 0), 2);
-                    CvInvoke.Line(result, _pointsTop[j+1], _pointsBot[j+1], new MCvScalar(255, 0, 0), 2);
-                    if(_pointsTop[j].Y < _pointsTop[j+1].Y)
-                    {
-                        _nTop = new Point((_pointsTop[j].X + _pointsTop[j+1].X)/2, _pointsTop[j + 1].Y);
-                    }
-                    else
-                    {
-                        _nTop = new Point((_pointsTop[j].X + _pointsTop[j + 1].X) / 2, _pointsTop[j].Y);
-                    }
-
-                    if (_pointsBot[j].Y < _pointsBot[j + 1].Y)
-                    {
-                        _nBot = new Point((_pointsBot[j].X + _pointsBot[j + 1].X) / 2, _pointsBot[j].Y);
-                    }
-                    else
-                    {
-                        _nBot = new Point((_pointsBot[j].X + _pointsBot[j + 1].X) / 2, _pointsBot[j+1].Y);
-                    }
-                    CvInvoke.Line(result, _nTop, _nBot, new MCvScalar(255, 0, 0), 2);
-                    j++;
+                    CvInvoke.Line(result, new Point((_X[j] + _X[j-1])/2 , _YBot[k]), new Point((_X[j] + _X[j - 1]) / 2, _YTop[k]), new MCvScalar(255, 0, 0), 2);
+                    k++;
                 }
-
+            }
             return result.ToBitmap();
         }
     }
