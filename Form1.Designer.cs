@@ -63,7 +63,7 @@ namespace FaceDetect2
             this.ResBox.Location = new System.Drawing.Point(0, 0);
             this.ResBox.Name = "ResBox";
             this.ResBox.Size = new System.Drawing.Size(800, 426);
-            this.ResBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ResBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ResBox.TabIndex = 0;
             this.ResBox.TabStop = false;
             // 
