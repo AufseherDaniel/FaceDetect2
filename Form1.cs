@@ -24,10 +24,6 @@ namespace FaceDetect2
         private void File_Click(object sender, EventArgs e)
         {
             _opf.ShowDialog();
-            if (_opf.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
         }
 
         private void FindB_Click(object sender, EventArgs e)
