@@ -10,6 +10,8 @@ using Emgu.Util;
 using Emgu.CV.Util;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace FaceDetect2
 {
@@ -19,31 +21,43 @@ namespace FaceDetect2
         {
             Mat src = CvInvoke.Imread(original);
             Mat result = src.Clone();
-
             Mat tempImg = CvInvoke.Imread(template);
             int rows_dst = src.Rows - tempImg.Rows + 1;
             int cols_dst = src.Cols - tempImg.Cols + 1;
             Mat dst = new Mat(rows_dst, cols_dst, DepthType.Cv32F, 1);
             CvInvoke.MatchTemplate(src, tempImg, dst, TemplateMatchingType.CcoeffNormed);
             CvInvoke.Normalize(dst, dst, 0, 1, NormType.MinMax, dst.Depth);
-
             double minValue = 1000, maxvalue = -1;
             Point minLoc = new Point(0, 0);
             Point maxLoc = new Point(0, 0);
-
             CvInvoke.MinMaxLoc(dst, ref minValue, ref maxvalue, ref minLoc, ref maxLoc);
-            CvInvoke.Rectangle(result, new Rectangle(maxLoc.X, maxLoc.Y, tempImg.Width, tempImg.Height), new MCvScalar(0, 255, 0), 2);
+            CvInvoke.Rectangle(result, new Rectangle(maxLoc.X, maxLoc.Y, tempImg.Width, tempImg.Height), new MCvScalar(255, 0, 0), 2);
             return result.ToBitmap();
         }
-        private Point FindTopCenter(Rectangle rect)
+
+        public Bitmap TemplateMatching(string original, string template, string rez)
         {
-            return new Point(rect.Left + rect.Width / 2, rect.Top);
+            Mat src = CvInvoke.Imread(original);
+            Mat result = CvInvoke.Imread(rez);
+            Mat tempImg = CvInvoke.Imread(template);
+            int rows_dst = src.Rows - tempImg.Rows + 1;
+            int cols_dst = src.Cols - tempImg.Cols + 1;
+            Mat dst = new Mat(rows_dst, cols_dst, DepthType.Cv32F, 1);
+            CvInvoke.MatchTemplate(src, tempImg, dst, TemplateMatchingType.CcoeffNormed);
+            CvInvoke.Normalize(dst, dst, 0, 1, NormType.MinMax, dst.Depth);
+            double minValue = 0, maxvalue = 0;
+            Point minLoc = new Point(0, 0);
+            Point maxLoc = new Point(0, 0);
+            CvInvoke.MinMaxLoc(dst, ref minValue, ref maxvalue, ref minLoc, ref maxLoc);
+            CvInvoke.Rectangle(result, new Rectangle(maxLoc.X, maxLoc.Y, tempImg.Width, tempImg.Height), new MCvScalar(255, 0, 0), 2);
+            return result.ToBitmap();
         }
 
-        private Point FindBotCenter(Rectangle rect)
+        private Point FindCenter(Rectangle rect)
         {
-            return new Point(rect.Left + rect.Width / 2, rect.Bottom);
+            return new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
         }
+
 
         public Bitmap ViolaJones(string original)
         {
@@ -99,6 +113,37 @@ namespace FaceDetect2
                 }
             }
             return result.ToBitmap();
+        }
+
+        public void SaveImage(Image _savedFile)
+        {
+            SaveFileDialog SFD = new SaveFileDialog
+            {
+                Title = "Сохранить как...",
+                OverwritePrompt = true,
+                CheckPathExists = true,
+                Filter = ".PNG|*.PNG|.JPG|*.JPG|Все файлы(*.*)|*.*"
+            };
+            if (SFD.ShowDialog() == DialogResult.OK)
+            {
+                try 
+                {
+                    _savedFile.Save(SFD.FileName);
+                }
+                catch 
+                {
+                    MessageBox.Show("Не удалось сохранить изображение","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            SFD.Dispose();
+        }
+
+        public void FileDelete(string _path)
+        {
+            if (File.Exists(_path) == true)
+            {
+                File.Delete(_path);
+            }
         }
     }
 }

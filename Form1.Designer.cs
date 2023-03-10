@@ -41,6 +41,8 @@ namespace FaceDetect2
             this.Methods = new System.Windows.Forms.ToolStripComboBox();
             this.Templates = new System.Windows.Forms.ToolStripComboBox();
             this.FindB = new System.Windows.Forms.ToolStripButton();
+            this.SaveButton = new System.Windows.Forms.ToolStripButton();
+            this.ContinueWithThisB = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -75,12 +77,12 @@ namespace FaceDetect2
             // MethodBox
             // 
             this.MethodBox.Name = "MethodBox";
-            this.MethodBox.Size = new System.Drawing.Size(121, 25);
+            this.MethodBox.Size = new System.Drawing.Size(121, 28);
             // 
             // TemplateBox
             // 
             this.TemplateBox.Name = "TemplateBox";
-            this.TemplateBox.Size = new System.Drawing.Size(121, 25);
+            this.TemplateBox.Size = new System.Drawing.Size(121, 28);
             // 
             // ResButton
             // 
@@ -95,10 +97,12 @@ namespace FaceDetect2
             this.File,
             this.Methods,
             this.Templates,
-            this.FindB});
+            this.FindB,
+            this.SaveButton,
+            this.ContinueWithThisB});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 31);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -109,18 +113,20 @@ namespace FaceDetect2
             this.File.Image = ((System.Drawing.Image)(resources.GetObject("File.Image")));
             this.File.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.File.Name = "File";
-            this.File.Size = new System.Drawing.Size(49, 25);
+            this.File.Size = new System.Drawing.Size(49, 28);
             this.File.Text = "Файл";
             this.File.Click += new System.EventHandler(this.File_Click);
             // 
             // Methods
             // 
+            this.Methods.AutoSize = false;
             this.Methods.Items.AddRange(new object[] {
             "Шаблоны",
             "Виола-Джонс",
             "Линии Сим"});
             this.Methods.Name = "Methods";
-            this.Methods.Size = new System.Drawing.Size(121, 28);
+            this.Methods.Size = new System.Drawing.Size(121, 31);
+            this.Methods.SelectedIndexChanged += new System.EventHandler(this.Methods_SelectedIndexChanged);
             // 
             // Templates
             // 
@@ -136,6 +142,7 @@ namespace FaceDetect2
             "Лицо"});
             this.Templates.Name = "Templates";
             this.Templates.Size = new System.Drawing.Size(121, 28);
+            this.Templates.Visible = false;
             this.Templates.SelectedIndexChanged += new System.EventHandler(this.Templates_SelectedIndexChanged);
             // 
             // FindB
@@ -150,6 +157,27 @@ namespace FaceDetect2
             this.FindB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FindB.Click += new System.EventHandler(this.FindB_Click);
             // 
+            // SaveButton
+            // 
+            this.SaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveButton.Image = global::FaceDetect2.Properties.Resources.Save__1_;
+            this.SaveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(29, 25);
+            this.SaveButton.Text = "toolStripButton1";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // ContinueWithThisB
+            // 
+            this.ContinueWithThisB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ContinueWithThisB.Image = global::FaceDetect2.Properties.Resources.Cont;
+            this.ContinueWithThisB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ContinueWithThisB.Name = "ContinueWithThisB";
+            this.ContinueWithThisB.Size = new System.Drawing.Size(29, 25);
+            this.ContinueWithThisB.Text = "Продолжить";
+            this.ContinueWithThisB.Visible = false;
+            this.ContinueWithThisB.Click += new System.EventHandler(this.ContinueWithThisB_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,8 +185,10 @@ namespace FaceDetect2
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "I See You";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ResBox)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -181,6 +211,8 @@ namespace FaceDetect2
         private System.Windows.Forms.ToolStripComboBox Methods;
         private System.Windows.Forms.ToolStripComboBox Templates;
         private System.Windows.Forms.ToolStripButton FindB;
+        private System.Windows.Forms.ToolStripButton SaveButton;
+        private System.Windows.Forms.ToolStripButton ContinueWithThisB;
     }
 }
 
