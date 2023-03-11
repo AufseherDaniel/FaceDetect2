@@ -17,6 +17,7 @@ namespace FaceDetect2
 {
     class FaceDetect
     {
+        private string _dataPath = Path.Combine(Application.StartupPath, @"WorkData\");
         public Bitmap TemplateMatching(string original, string template)
         {
             Mat src = CvInvoke.Imread(original);
@@ -61,7 +62,7 @@ namespace FaceDetect2
 
         public Bitmap ViolaJones(string original)
         {
-            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(Environment.CurrentDirectory, @"Templates\", "haarcascade_frontalface_alt.xml")); 
+            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_frontalface_alt.xml")); 
             Mat result = CvInvoke.Imread(original);
             Mat gray = new Mat();
             CvInvoke.CvtColor(result, gray, ColorConversion.Bgr2Gray);
@@ -80,8 +81,8 @@ namespace FaceDetect2
             List<int> _YTop = new List<int>();
             List<int> _X = new List<int>();
             int k = 0;
-            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(Environment.CurrentDirectory, @"Templates\", "haarcascade_frontalface_alt.xml"));
-            CascadeClassifier eye_cascade = new CascadeClassifier(Path.Combine(Environment.CurrentDirectory, @"Templates\", "haarcascade_eye.xml")); 
+            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_frontalface_alt.xml"));
+            CascadeClassifier eye_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_eye.xml")); 
             Mat result = CvInvoke.Imread(original);
             Mat gray = new Mat();
             CvInvoke.CvtColor(result, gray, ColorConversion.Bgr2Gray);

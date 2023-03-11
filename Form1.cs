@@ -20,6 +20,7 @@ namespace FaceDetect2
         FaceDetect FD = new FaceDetect();
         OpenFileDialog _opf = new OpenFileDialog();
         private string _templatePath;
+        private string _dataPath = Path.Combine(Application.StartupPath, @"WorkData\");
 
         private void File_Click(object sender, EventArgs e)
         {
@@ -51,25 +52,25 @@ namespace FaceDetect2
 
         private void Templates_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Templates.SelectedIndex == 0) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Brows.png"); }
-            if (Templates.SelectedIndex == 1) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browL.png"); }
-            if (Templates.SelectedIndex == 2) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "browR.png"); }
-            if (Templates.SelectedIndex == 3) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "eyes.png"); }
-            if (Templates.SelectedIndex == 4) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeL.png"); }
-            if (Templates.SelectedIndex == 5) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "EyeR.png"); }
-            if (Templates.SelectedIndex == 6) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Nouse.png"); }
-            if (Templates.SelectedIndex == 7) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Mouth.png"); }
-            if (Templates.SelectedIndex == 8) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\", "Face.png"); }
+            if (Templates.SelectedIndex == 0) { _templatePath = Path.Combine(_dataPath, @"Templates\", "Brows.png"); }
+            if (Templates.SelectedIndex == 1) { _templatePath = Path.Combine(_dataPath, @"Templates\", "browL.png"); }
+            if (Templates.SelectedIndex == 2) { _templatePath = Path.Combine(_dataPath, @"Templates\", "browR.png"); }
+            if (Templates.SelectedIndex == 3) { _templatePath = Path.Combine(_dataPath, @"Templates\", "eyes.png"); }
+            if (Templates.SelectedIndex == 4) { _templatePath = Path.Combine(_dataPath, @"Templates\", "EyeL.png"); }
+            if (Templates.SelectedIndex == 5) { _templatePath = Path.Combine(_dataPath, @"Templates\", "EyeR.png"); }
+            if (Templates.SelectedIndex == 6) { _templatePath = Path.Combine(_dataPath, @"Templates\", "Nouse.png"); }
+            if (Templates.SelectedIndex == 7) { _templatePath = Path.Combine(_dataPath, @"Templates\", "Mouth.png"); }
+            if (Templates.SelectedIndex == 8) { _templatePath = Path.Combine(_dataPath, @"Templates\", "Face.png"); }
 
-            /*if (Templates.SelectedIndex == 0) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "Brows.jpg"); }
-            if (Templates.SelectedIndex == 1) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "browL.jpg"); }
-            if (Templates.SelectedIndex == 2) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "browR.jpg"); }
-            if (Templates.SelectedIndex == 3) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "eyes.jpg"); }
-            if (Templates.SelectedIndex == 4) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "EyeL.jpg"); }
-            if (Templates.SelectedIndex == 5) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "EyeR.jpg"); }
-            if (Templates.SelectedIndex == 6) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "Nouse.jpg"); }
-            if (Templates.SelectedIndex == 7) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "Mouth.jpg"); }
-            if (Templates.SelectedIndex == 8) { _templatePath = Path.Combine(Environment.CurrentDirectory, @"Templates\Show\", "Face.jpg"); }*/
+            /*if (Templates.SelectedIndex == 0) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "Brows.jpg"); }
+            if (Templates.SelectedIndex == 1) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "browL.jpg"); }
+            if (Templates.SelectedIndex == 2) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "browR.jpg"); }
+            if (Templates.SelectedIndex == 3) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "eyes.jpg"); }
+            if (Templates.SelectedIndex == 4) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "EyeL.jpg"); }
+            if (Templates.SelectedIndex == 5) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "EyeR.jpg"); }
+            if (Templates.SelectedIndex == 6) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "Nouse.jpg"); }
+            if (Templates.SelectedIndex == 7) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "Mouth.jpg"); }
+            if (Templates.SelectedIndex == 8) { _templatePath = Path.Combine(_dataPath, @"Templates\Show\", "Face.jpg"); }*/
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -94,7 +95,7 @@ namespace FaceDetect2
         {
             try
             {
-                string name = Path.Combine(Environment.CurrentDirectory, @"Temp\", "img.jpg");
+                string name = Path.Combine(_dataPath, "tempImgForFD2.jpg");
                 ResBox.Image.Save(name);
                 ResBox.Image = FD.TemplateMatching(_opf.FileName, _templatePath, name);
                 FD.FileDelete(name);
