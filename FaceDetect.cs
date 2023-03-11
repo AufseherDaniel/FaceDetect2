@@ -62,7 +62,10 @@ namespace FaceDetect2
 
         public Bitmap ViolaJones(string original)
         {
-            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_frontalface_alt.xml")); 
+            string name = Path.Combine(_dataPath, "tempHaarasFaceForFD2.xml");
+            File.WriteAllText(name, Properties.Resources.haarcascade_frontalface_alt); 
+            CascadeClassifier face_cascade = new CascadeClassifier(name);
+            File.Delete(name);
             Mat result = CvInvoke.Imread(original);
             Mat gray = new Mat();
             CvInvoke.CvtColor(result, gray, ColorConversion.Bgr2Gray);
@@ -77,12 +80,18 @@ namespace FaceDetect2
 
         public Bitmap LinesOfSymmetry(string original)
         {
+            string nameF = Path.Combine(_dataPath, "tempHaarasFaceForFD2.xml");
+            File.WriteAllText(nameF, Properties.Resources.haarcascade_frontalface_alt);
+            string nameE = Path.Combine(_dataPath, "tempHaarasEyeForFD2.xml");
+            File.WriteAllText(nameE, Properties.Resources.haarcascade_eye);
             List<int> _YBot = new List<int>();
             List<int> _YTop = new List<int>();
             List<int> _X = new List<int>();
             int k = 0;
-            CascadeClassifier face_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_frontalface_alt.xml"));
-            CascadeClassifier eye_cascade = new CascadeClassifier(Path.Combine(_dataPath, @"Templates\", "haarcascade_eye.xml")); 
+            CascadeClassifier face_cascade = new CascadeClassifier(nameF);
+            CascadeClassifier eye_cascade = new CascadeClassifier(nameE);
+            File.Delete(nameF);
+            File.Delete(nameE);
             Mat result = CvInvoke.Imread(original);
             Mat gray = new Mat();
             CvInvoke.CvtColor(result, gray, ColorConversion.Bgr2Gray);

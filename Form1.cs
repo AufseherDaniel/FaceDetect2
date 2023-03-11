@@ -29,8 +29,8 @@ namespace FaceDetect2
 
         private void FindB_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (Methods.SelectedIndex == 0) //tm
                 {
                     ResBox.Image = FD.TemplateMatching(_opf.FileName, _templatePath);
@@ -43,11 +43,11 @@ namespace FaceDetect2
                 {
                     ResBox.Image = FD.LinesOfSymmetry(_opf.FileName);
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Убедитесь все ли вы выбрали", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch
+            //{
+              //  MessageBox.Show("Убедитесь все ли вы выбрали", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void Templates_SelectedIndexChanged(object sender, EventArgs e)

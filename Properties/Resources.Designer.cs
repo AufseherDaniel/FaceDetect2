@@ -71,31 +71,68 @@ namespace FaceDetect2.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;!--
+        ///    Stump-based 20x20 frontal eye detector.
+        ///    Created by Shameem Hameed (http://umich.edu/~shameem)
+        ///
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        ///  IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.
+        ///
+        ///  By downloading, copying, installing or using the software you agree to this license.
+        ///  If you do not agree to this license, do not download, install,
+        ///  copy or use the software.
+        ///
+        ///
+        ///                        Intel License Agr [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string haarcascade_eye {
+            get {
+                return ResourceManager.GetString("haarcascade_eye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;!--
+        ///    Stump-based 20x20 gentle adaboost frontal face detector.
+        ///    Created by Rainer Lienhart.
+        ///
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        ///  IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.
+        ///
+        ///  By downloading, copying, installing or using the software you agree to this license.
+        ///  If you do not agree to this license, do not download, install,
+        ///  copy or use the software.
+        ///
+        ///
+        ///                        Intel License Agreement
+        ///   [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string haarcascade_frontalface_alt {
+            get {
+                return ResourceManager.GetString("haarcascade_frontalface_alt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Save__1_ {
-            get {
-                object obj = ResourceManager.GetObject("Save (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Снимок_экрана_2023_03_10_170718_PhotoRoom_png_PhotoRoom {
-            get {
-                object obj = ResourceManager.GetObject("Снимок экрана 2023-03-10 170718-PhotoRoom.png-PhotoRoom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
