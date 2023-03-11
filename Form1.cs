@@ -28,7 +28,8 @@ namespace FaceDetect2
             {
                 if (_opf.ShowDialog() == DialogResult.OK)
                 {
-                    ResBox.Image = new Bitmap(Image.FromFile(_opf.FileName));
+                    ResBox.Refresh();
+                    ResBox.Image = FD.UniConverter(_opf.FileName);
                 }
                 else 
                 {
@@ -47,14 +48,17 @@ namespace FaceDetect2
             {
                 if (Methods.SelectedIndex == 0) //tm
                 {
+                    ResBox.Refresh();
                     ResBox.Image = FD.TemplateMatching(_opf.FileName, _templatePath);
                 }
                 if (Methods.SelectedIndex == 1) //vj
                 {
+                    ResBox.Refresh();
                     ResBox.Image = FD.ViolaJones(_opf.FileName);
                 }
                 if (Methods.SelectedIndex == 2) //ls
                 {
+                    ResBox.Refresh();
                     ResBox.Image = FD.LinesOfSymmetry(_opf.FileName);
                 }
             }
@@ -111,6 +115,7 @@ namespace FaceDetect2
             {
                 string name = Path.Combine(_dataPath, "tempImgForFD2.jpg");
                 ResBox.Image.Save(name);
+                ResBox.Refresh();
                 ResBox.Image = FD.TemplateMatching(_opf.FileName, _templatePath, name);
                 FD.FileDelete(name);
             }

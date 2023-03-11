@@ -17,6 +17,12 @@ namespace FaceDetect2
 {
     class FaceDetect
     {
+        public Bitmap UniConverter(string img)
+        {
+            Mat src = CvInvoke.Imread(img);
+            return src.ToBitmap();
+        }
+
         private string _dataPath = Path.Combine(Application.StartupPath, @"WorkData\");
         public Bitmap TemplateMatching(string original, string template)
         {
