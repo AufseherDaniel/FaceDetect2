@@ -160,7 +160,7 @@ namespace FaceDetect2
             // SaveButton
             // 
             this.SaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveButton.Image = global::FaceDetect2.Properties.Resources.Save__1_;
+            this.SaveButton.Image = global::FaceDetect2.Properties.Resources.Save;
             this.SaveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(29, 25);

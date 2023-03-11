@@ -93,18 +93,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Save %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Снимок экрана 2023-03-10 170718-PhotoRoom.png-PhotoRoom.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Cont.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Logo.png" />
+    <Content Include="Resources\Save.png" />
     <Content Include="WorkData\Templates\browL.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
