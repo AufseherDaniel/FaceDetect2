@@ -102,7 +102,7 @@ namespace FaceDetect2
             this.ContinueWithThisB});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -113,7 +113,7 @@ namespace FaceDetect2
             this.File.Image = ((System.Drawing.Image)(resources.GetObject("File.Image")));
             this.File.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.File.Name = "File";
-            this.File.Size = new System.Drawing.Size(49, 28);
+            this.File.Size = new System.Drawing.Size(49, 25);
             this.File.Text = "Файл";
             this.File.Click += new System.EventHandler(this.File_Click);
             // 
@@ -125,7 +125,7 @@ namespace FaceDetect2
             "Виола-Джонс",
             "Линии Сим"});
             this.Methods.Name = "Methods";
-            this.Methods.Size = new System.Drawing.Size(121, 31);
+            this.Methods.Size = new System.Drawing.Size(121, 28);
             this.Methods.SelectedIndexChanged += new System.EventHandler(this.Methods_SelectedIndexChanged);
             // 
             // Templates
@@ -187,7 +187,7 @@ namespace FaceDetect2
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "I See You";
+            this.Text = "Face Detect by Aufseher Daniel";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ResBox)).EndInit();
